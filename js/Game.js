@@ -1,3 +1,31 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
- * Game.js */
+class Game {
+    constructor(){
+        this.missed = missed;
+        this.phrases = phrases;
+        this.activePhrase = activePhrase;
+    }
+
+    startGame(){
+
+    }
+
+    getRandomPhrase(){
+
+    }
+
+    handleInteraction(){
+
+    }
+
+    removeLife(){
+
+    }
+
+    checkForWin(){
+
+    }
+
+    gameOver(){
+
+    }
+}
