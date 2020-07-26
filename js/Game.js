@@ -5,8 +5,15 @@ class Game {
         this.activePhrase = null;
     }
 
+    /**
+    * Begins game by selecting a random phrase and displaying it to user
+    */
     startGame(){
-
+        const overlayDiv = document.getElementById('overlay');
+        overlayDiv.style.display = 'none';
+        this.getRandomPhrase();
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay(Phrase);
     }
 
     /**
