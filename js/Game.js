@@ -21,11 +21,18 @@ class Game {
             new Phrase('Do one thing everyday that scares you'),
             new Phrase('Impossible is just an opinion')
         ]
+        
         return phrases;
     };
 
+    /**
+    * Selects random phrase from phrases property
+    * @return {Object} Phrase object chosen to be used
+    */
     getRandomPhrase(){
+        const phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)]
 
+        return phrase;
     }
 
     handleInteraction(){
