@@ -103,11 +103,11 @@ class Game {
         const overlay = document.getElementById('overlay');
         
         if (this.checkForWin() === true) {
-            overlay.class = 'won';
+            overlay.className = 'win';
             overlay.style.display = 'block';
             gameOverMsg.textContent = 'Congratulations, you WON!';
         } else {
-            overlay.class = 'lose';
+            overlay.className = 'lose';
             overlay.style.display = 'block';
             gameOverMsg.textContent = 'Better Luck next time :(';
         }
