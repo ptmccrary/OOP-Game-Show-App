@@ -104,11 +104,11 @@ class Game {
         
         if (this.checkForWin() === true) {
             overlay.className = 'win';
-            overlay.style.display = 'block';
+            overlay.style.display = 'flex';
             gameOverMsg.textContent = 'Congratulations, you WON!';
         } else {
             overlay.className = 'lose';
-            overlay.style.display = 'block';
+            overlay.style.display = 'flex';
             gameOverMsg.textContent = 'Better Luck next time :(';
         }
     }
