@@ -27,7 +27,7 @@ class Game {
             new Phrase('Its hard to beat a person who never gives up'),
             new Phrase('Do one thing everyday that scares you'),
             new Phrase('Impossible is just an opinion')
-        ]
+        ];
         
         return phrases;
     };
@@ -37,14 +37,18 @@ class Game {
     * @return {Object} Phrase object chosen to be used
     */
     getRandomPhrase() {
-        const phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)]
+        const phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
 
         return phrase;
     }
 
-    handleInteraction() {
-
-    }
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+    handleInteraction(button) {
+    console.log(button);
+    };
 
     /**
     * Increases the value of the missed property
@@ -52,7 +56,17 @@ class Game {
     * Checks if player has remaining lives and ends game if player is out
     */
     removeLife() {
-
+        const heartsOl = document.querySelector('#scoreboard ol');
+        let triesLi = heartsOl.querySelector('.tries');
+        let heartImg = heartsOl.querySelector('.tries img');
+        if(this.activePhrase.checkLetter(this.letter) === false) {
+            this.missed++;
+            heartImg.src = 'images/lostHeart.png';
+            triesLi.className = 'fails';
+        }
+        if(this.missed > 4) {
+            this.gameOver();
+        }
     }
 
     /**
@@ -60,7 +74,12 @@ class Game {
     * @return {boolean} True if game has been won, false if game wasn't won
     */
     checkForWin() {
-
+        const hiddenLetter = document.getElementsByClassName('hide');
+        if(hiddenLetter.length > 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -68,6 +87,17 @@ class Game {
     * @param {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon) {
-
+        const gameOverMsg = document.getElementById('game-over-message');
+        const overlay = document.getElementById('overlay');
+        
+        if (this.checkForWin() === true) {
+            overlay.class = 'won';
+            overlay.style.display = 'block';
+            gameOverMsg.textContent = 'Congratulations, you WON!';
+        } else {
+            overlay.class = 'lose';
+            overlay.style.display = 'block';
+            gameOverMsg.textContent = 'Better Luck next time :(';
+        }
     }
 }

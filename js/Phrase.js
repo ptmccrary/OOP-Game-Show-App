@@ -42,6 +42,12 @@ class Phrase {
     * @param (string) letter - Letter to display
     */
     showMatchedLetter(letter) {
-        
+        let letters = document.getElementsByClassName('letter');
+        for(let i = 0; i < letters.length; i++) {
+            if(letters[i].classList.contains(`${letter}`)) {
+                letters[i].className = `show letter ${letter}`;
+                letters[i].textContent = `${letter}`;
+            }
+        }
     }
 }
