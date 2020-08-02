@@ -9,7 +9,7 @@
   --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
-  --color-keys: #37474F;
+  --color-keys: #000000;
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
@@ -40,6 +40,8 @@ h2 {
   text-transform: uppercase;
   font-size: var(--font-size-large);
   margin: 0;
+  font-family: Impact, Charcoal, sans-serif;
+  color: #8c35fd;
 }
 
 h1 {
@@ -62,7 +64,11 @@ button {
 
 #btn__reset {
 	width: 200px;
-	margin: 0 auto;
+	margin: 50px auto;
+}
+
+#btn__reset:hover {
+  background-color: #adadad;
 }
 
 .main-container {
@@ -86,7 +92,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #9dadff;
 }
 
 
@@ -100,7 +106,7 @@ button {
   margin-right: 2px;
   color: transparent;
   background: var(--color-neutral-light);
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 .space {
@@ -111,13 +117,13 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #64e8f1;
   font-size: 20px;
   height: 65px;
   width: 65px;
   padding: 20px 1px 0 1px;
   margin-right: 2px;
-  border-radius: 5px;
+  border-radius: 50%;
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
 }
@@ -130,15 +136,19 @@ button {
   justify-content: center;
 }
 
+.keyrow > .key:hover{
+  background-color: #a64dfa98;
+}
+
 .chosen {
-  background: #3a3f58;
+  background: #3fdb3f;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
 
 .wrong {
-  background: #f7a964;
+  background: #f52a2a;
   color: #FFFFFF;
 }
 
@@ -177,10 +187,11 @@ button {
 
 .title {
   color: #FFF;
+  font-family: Impact, Charcoal, sans-serif ;
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #9dadff;
 }
 
 .start a {
@@ -196,9 +207,14 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #fa2b01;
 }
 
 .lose a {
   color: var(--color-lose);
+}
+
+#game-over-message {
+  font-family: Georgia, serif ;
+  margin-top: 50px;
 }
