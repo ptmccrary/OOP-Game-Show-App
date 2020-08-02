@@ -10,3 +10,7 @@ document.getElementById('qwerty').addEventListener('click', (e) => {
         game.handleInteraction(e.target);
     }
 })
+
+document.addEventListener('keydown', (e) => {
+    game.handleInteraction(e.key);
+})

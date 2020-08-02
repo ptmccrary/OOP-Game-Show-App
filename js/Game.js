@@ -9,6 +9,7 @@ class Game {
     * Begins game by selecting a random phrase and displaying it to user
     */
     startGame() {
+        this.resetGame();
         const overlayDiv = document.getElementById('overlay');
         overlayDiv.style.display = 'none';
         this.getRandomPhrase();
@@ -47,19 +48,20 @@ class Game {
     * @param (HTMLButtonElement) button - The clicked button element
     */
     handleInteraction(button) {
-    if(this.activePhrase.checkLetter(button.textContent) === false) {
-        button.disabled = true;
-        button.className = 'wrong';
-        this.removeLife();
-    } else {
-        button.disabled = true;
-        button.className = 'chosen';
-        this.activePhrase.showMatchedLetter(button.textContent);
-        this.checkForWin;
-        if(this.checkForWin() === true) {
-            this.gameOver();
+
+        if(this.activePhrase.checkLetter(button) === false) {
+            button.disabled = true;
+            button.className = 'wrong';
+            this.removeLife();
+        } else {
+            button.disabled = true;
+            button.className = 'chosen';
+            this.activePhrase.showMatchedLetter(button);
+            this.checkForWin();
+            if(this.checkForWin() === true) {
+                this.gameOver();
+            }
         }
-    }
     };
 
     /**
@@ -110,6 +112,33 @@ class Game {
             overlay.className = 'lose';
             overlay.style.display = 'flex';
             gameOverMsg.textContent = 'Better Luck next time :(';
+        }
+    }
+
+    /**
+     * Removes 'li' elements from phrase 'ul' element
+     * Enables all onscreen keyboard buttons, updated to 'key' class
+     * Resets all heart images to 'liveHeart.png'
+     */
+    resetGame() {
+        const phraseUl = document.querySelector('#phrase ul');
+        phraseUl.innerHTML = '';
+        this.missed = 0;
+        const buttons = document.getElementsByTagName('BUTTON');
+        for(let i = 0; i < buttons.length; i++) {
+            buttons[i].className = 'key';
+            buttons[i].disabled = false;
+        }
+        
+        const heartsOl = document.querySelector('#scoreboard ol');
+        let fails = heartsOl.querySelectorAll('.fails');
+        for(let i = 0; i < fails.length; i++) {
+            fails[i].className = 'tries';
+        }
+
+        let lives = heartsOl.querySelectorAll('.tries img');
+        for(let i = 0; i < lives.length; i++){
+            lives[i].src = 'images/liveHeart.png';
         }
     }
 }
