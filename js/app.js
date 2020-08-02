@@ -4,13 +4,19 @@ document.getElementById('btn__reset').addEventListener('click', () => {
     game = new Game();
     game.startGame();
 });
-
-document.getElementById('qwerty').addEventListener('click', (e) => {
+const keyboard = document.getElementById('qwerty');
+keyboard.addEventListener('click', (e) => {
     if(e.target.tagName === 'BUTTON') {
         game.handleInteraction(e.target);
     }
-})
+});
 
 document.addEventListener('keydown', (e) => {
-    game.handleInteraction(e.key);
-})
+    const keypress = e.key;
+    const virtualKeys = keyboard.getElementsByClassName('key');
+    for(let i = 0; i < virtualKeys.length; i++){
+        if(virtualKeys[i].textContent === keypress) {
+            game.handleInteraction(virtualKeys[i]);
+        }
+    }
+});

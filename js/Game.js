@@ -49,14 +49,14 @@ class Game {
     */
     handleInteraction(button) {
 
-        if(this.activePhrase.checkLetter(button) === false) {
+        if(this.activePhrase.checkLetter(button.textContent) === false) {
             button.disabled = true;
             button.className = 'wrong';
             this.removeLife();
         } else {
             button.disabled = true;
             button.className = 'chosen';
-            this.activePhrase.showMatchedLetter(button);
+            this.activePhrase.showMatchedLetter(button.textContent);
             this.checkForWin();
             if(this.checkForWin() === true) {
                 this.gameOver();
